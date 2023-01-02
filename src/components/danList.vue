@@ -14,8 +14,9 @@
              </span>
              <div class="textField"
              v-show="!toFix || checked !== idx">
+             {{ danItem }}단 <br/>
              <for v-for="index in 9" :key="index">
-                {{danItem}} * {{index}} = {{ danItem * index }} &nbsp; &nbsp;
+                {{danItem}} * {{index}} = {{ danItem * index }}<br/>
             </for>
              </div>
              <input type="text"
@@ -113,13 +114,16 @@
       }
       li {
           display: flex;
-          min-height: 50px;
-          height: 50px;
-          line-height: 50px;
+          min-height: 30px;
+          height: 300px;
+          line-height: 30px;
+          width: 28%;
           margin: 0.5rem 0;
           padding: 0 0.9rem;
           background: white;
-          border-radius: 5px;
+          border-radius: 20px;
+          margin: 20px;
+          float: left;
       }
       .checkBtn {
           line-height: 45px;
