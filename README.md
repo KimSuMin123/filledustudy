@@ -1,4 +1,4 @@
-# ex03
+# todolist gugudan
 
 ## Project setup
 ```
