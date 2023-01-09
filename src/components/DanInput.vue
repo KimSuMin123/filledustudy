@@ -6,7 +6,7 @@
                 @input="bindDanText"
                 v-bind:value="danText" 
                 class="form-control"  
-                type="text" 
+                type="number" 
             />
             <button @click="addDanI" v-bind:disabled="danText == ''" >Add</button>
         </div>
@@ -35,14 +35,6 @@ export default {
             this.danText = "";
         }
     },  
-    watch: {
-        danText(val){
-        const reg = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;
-        if(reg.exec(val)!==null) this.danText = val.replace(/[^0-9]/g,'');
-        if(isNaN(parseFloat(val))) this.danText = '';
-        
-        }
-  }
 }
 
 </script>

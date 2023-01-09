@@ -11,13 +11,13 @@
                 v-bind:value="danText" 
                 @input="bindDanText"
                 @change="danTextChange"
-                v-else type="text" 
+                v-else type="number" 
                 class="form-control" 
              />
         
              <div class="button">
                 <div>
-                <button @click="updateDanI(dan)" v-bind:disabled="danText == ''">{{editing?'Update' :'Edit'}}</button>
+                <button @click="updateDanI(dan)">{{editing?'Update' :'Edit'}}</button>
                 <button @click="deleteDan(dan.id)">Delete</button>
             </div>
              </div>
@@ -46,18 +46,13 @@ export default {
         updateDanI(dan){
             this.editing = this.editing == true ? false : true;
             if(this.editing){
-                this.danText = dan.title;
-                this.updateDan(dan);
+                this.updateDan({
+                    id: this.danText,
+                    title: this.danText
+                });
             }else{
                 dan.title = this.danText;
             }
-        }
-    },watch: {
-        danText(val){
-        const reg = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;
-        if(reg.exec(val)!==null) this.danText = val.replace(/[^0-9]/g,'');
-        if(isNaN(parseFloat(val))) this.danText = '';
-        
         }
   }
 }
@@ -67,14 +62,15 @@ export default {
 .showfild{
     display: flex;
     min-height: 30px;
-          height: 300px;
-          line-height: 30px;
-          width: 28%;
-          margin: 0.5rem 0;
-          padding: 0 0.9rem;
-          background: lightgray;
-          border-radius: 20px;
-          margin: 20px;
-          float: left;
+    height: 350px;
+    line-height: 30px;
+    width: 28%;
+    margin: 0.5rem 0;
+    padding: 0 0.9rem;
+    background: lightgray;
+    border-radius: 20px;
+    margin: 20px;
+    float: left;
+
 }
 </style>

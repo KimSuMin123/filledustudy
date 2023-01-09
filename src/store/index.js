@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import createPersistedState from "vuex-persistedstate";
 
 export default createStore({
   state: {
@@ -10,30 +11,34 @@ export default createStore({
     allDans: (state) => state.dans,
   },
   actions: {
-    addDan({commit}, dan){
-      commit("add_dan", dan);
+    addDan({commit}, id){
+      commit("addDan", id);
     },
     deleteDan({commit}, id){
-      commit("delete_dan", id);
-    },updateDan({commit}, dan){
-      commit("update_dan", dan);
+      commit("deleteDan", id);
+    },updateDan({commit},id){
+      commit("updateDan", id);
     }
   },
   mutations: {
-    add_dan(state,dan){
-      state.dans.push(dan);
+    addDan(state,id){
+      state.dans.push(id);
     },
-    delete_dan(state,id){
+    deleteDan(state,id){
       state.dans = state.dans.filter(dan =>dan.id != id);
     }, 
-    update_dan(state, dan){
-      let index = state.dans.findIndex(t=>t.id == dan.id);
-      if(index != -1){
-        state.dans[index] = dan;
+    updateDan(state, id){
+      let index = state.dans.findIndex(dan =>dan.id == id);
+      if(index == -1){
+        state.dans[index] = id;
       }
     },
   },
   
   modules: {
-  }
+
+  }, plugins : [createPersistedState({
+    paths:["dans"]
+  })]
 });
+
