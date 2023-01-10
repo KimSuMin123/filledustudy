@@ -4,7 +4,6 @@ import createPersistedState from "vuex-persistedstate";
 export default createStore({
   state: {
     dans : [
-     
     ]
   },
   getters: {
@@ -16,21 +15,24 @@ export default createStore({
     },
     deleteDan({commit}, id){
       commit("deleteDan", id);
-    },updateDan({commit},id){
-      commit("updateDan", id);
+    },updateDan({commit},dan){
+      commit("updateDan", dan);
     }
   },
   mutations: {
     addDan(state,id){
       state.dans.push(id);
+      console.log(id);
     },
     deleteDan(state,id){
       state.dans = state.dans.filter(dan =>dan.id != id);
+      console.log(id);
     }, 
     updateDan(state, id){
-      let index = state.dans.findIndex(dan =>dan.id == id);
+      let index = state.dans.findIndex(dan =>dan.id == dan.id);
       if(index == -1){
         state.dans[index] = id;
+        console.log("sksksksks");
       }
     },
   },

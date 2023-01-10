@@ -7,6 +7,7 @@
                 v-bind:value="danText" 
                 class="form-control"  
                 type="number" 
+                placeholder="정수를 입력하세요!!"
             />
             <button @click="addDanI" v-bind:disabled="danText == ''" >Add</button>
         </div>

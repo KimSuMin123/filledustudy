@@ -13,6 +13,7 @@
                 @change="danTextChange"
                 v-else type="number" 
                 class="form-control" 
+                placeholder="정수를 입력하세요!!"
              />
         
              <div class="button">
@@ -34,7 +35,7 @@ export default {
     },
     data() {
         return{
-            danText:"1",
+            danText:"",
             editing: false
         };
     },
@@ -52,6 +53,7 @@ export default {
                 });
             }else{
                 dan.title = this.danText;
+                dan.id = this.danText;
             }
         }
   }
